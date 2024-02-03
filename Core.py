@@ -2,6 +2,7 @@ import asyncio
 import jdatetime
 from telethon.sync import TelegramClient
 from telethon.tl.functions.account import UpdateProfileRequest
+from pytz import timezone
 
 DaysOfWeek = {
     "Saturday":"شنبه","Sunday":"یکشنبه","Monday":"دوشنبه","Tuesday":"سه‌شنبه","Wednesday":"چهارشنبه","Thursday":"پنجشبه","Friday":"جمعه"
@@ -15,7 +16,7 @@ print("Started")
 async def update_profile():
     global time
     while True:
-        now = jdatetime.datetime.now()
+        now = jdatetime.datetime.now(timezone('Asia/Tehran'))
         if time == now.strftime("%H:%M"):
             await asyncio.sleep(1.5)
             continue
